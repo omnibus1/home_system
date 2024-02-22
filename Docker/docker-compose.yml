@@ -1,0 +1,28 @@
+volumes:
+  data:
+
+services:
+  database:
+    container_name: database
+    image: mysql
+    ports:
+      - "3307:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: django_test
+
+    volumes:
+      - data:/var/lib/mysql
+
+  backend:
+    image:
+      home_site_backend
+    build:
+      context: ../home_site/
+      dockerfile: ../home_site/Dockerfile
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
