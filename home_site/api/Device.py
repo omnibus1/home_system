@@ -3,6 +3,7 @@ import tinytuya
 
 
 class Device:
+    timeout_time = 2
     def __init__(self, device_id, device_key, device_ip):
         self.device_id = device_id
         self.device_key = device_key
@@ -17,24 +18,30 @@ class Device:
 
     def turn_on(self):
         """turns the device on"""
-        self.device.turn_on()
+        self.perform_task_with_timeout(self.device.turn_on, self.timeout_time)
 
     def turn_off(self):
         """turns the device off"""
-        self.device.turn_off()
+        self.perform_task_with_timeout(self.device.turn_off, self.timeout_time)
 
     def get_status(self):
-        """returns the status, uses a multiprocess to handle a not connected device, if the time to respond is larger
-            than a second, the device is considered to be offline"""
-        p = multiprocessing.Process(target=self.request_for_status)
-        p.start()
-        p.join(timeout=1)
-        if p.is_alive():
-            p.terminate()
-            return "offline"
+        """returns the status of the device"""
+        task_successful = self.perform_task_with_timeout(self.request_for_status, self.timeout_time)
 
+        if not task_successful:
+            return "offline"
         return self.request_for_status()
 
     def request_for_status(self):
         """sends a request to the device for a status, if the device is offline it will execute for a long time"""
         return "on" if self.device.status()["dps"]["1"] else "off"
+
+    def perform_task_with_timeout(self, task_function, timeout):
+        """Performs a task with a given timeout, returns a bool indicating if the task succeeded in time"""
+        p = multiprocessing.Process(target=task_function)
+        p.start()
+        p.join(timeout)
+        if p.is_alive():
+            p.terminate()
+            return False
+        return True

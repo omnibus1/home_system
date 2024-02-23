@@ -1,0 +1,7 @@
+.home-image{
+  opacity: 0;
+}
+.home-image:hover{
+  transition: opacity 25s;
+  opacity: 1;
+}

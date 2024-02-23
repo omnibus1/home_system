@@ -15,14 +15,14 @@ services:
     volumes:
       - data:/var/lib/mysql
 
-  backend:
-    image:
-      home_site_backend
-    build:
-      context: ../home_site/
-      dockerfile: ../home_site/Dockerfile
-    restart: always
-    ports:
-      - "8000:8000"
-    depends_on:
-      - database
+#  backend:
+#    image:
+#      home_site_backend
+#    build:
+#      context: ../home_site/
+#      dockerfile: ../home_site/Dockerfile
+#    restart: always
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - database

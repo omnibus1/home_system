@@ -6,17 +6,25 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeScreenComponent } from './home-screen/home-screen.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { GniazdkaPageComponent } from './gniazdka-screen/gniazdka-page/gniazdka-page.component';
+import { HttpClientModule} from '@angular/common/http';
+import { GniazdkoItemComponent } from './gniazdka-screen/gniazdko-item/gniazdko-item.component';
+import { SpinnerComponent } from './utils/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeScreenComponent,
-    NavbarComponent
+    NavbarComponent,
+    GniazdkaPageComponent,
+    GniazdkoItemComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration()

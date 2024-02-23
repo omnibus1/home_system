@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="col-12 mt-5">
+    <div *ngIf="isLoading" class="spinner-wrapper">
+      <app-spinner/>
+    </div>
+    <app-gniazdko-item *ngFor="let device of devices" [device]="device" (turnOn)="turnDeviceOn($event)" (turnOff)="turnDeviceOff($event)"/>
+  </div>
+</div>
+

@@ -10,6 +10,9 @@ class DeviceModel(models.Model):
     def get_device(self):
         return Device(self.device_id, self.device_key, self.device_ip)
 
+    def get_status(self):
+        return self.get_device().get_status()
+
     class Meta:
         verbose_name = "Device"
         verbose_name_plural = "Devices"
