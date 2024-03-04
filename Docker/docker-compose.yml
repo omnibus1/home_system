@@ -16,6 +16,7 @@ services:
       - data:/var/lib/mysql
 
 #  backend:
+#    container_name: backend
 #    image:
 #      home_site_backend
 #    build:
@@ -26,3 +27,16 @@ services:
 #      - "8000:8000"
 #    depends_on:
 #      - database
+#
+#  frontend:
+#    container_name: frontend
+#    image:
+#      home_site_frontend
+#    build:
+#      context: ../frontend
+#      dockerfile: ../frontend/Dockerfile
+#    restart: always
+#    ports:
+#      - "4200:4200"
+#    depends_on:
+#      - backend
