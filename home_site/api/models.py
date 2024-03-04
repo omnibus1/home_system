@@ -19,3 +19,8 @@ class DeviceModel(models.Model):
 
     def __str__(self):
         return "Outlet" + str(self.id)
+
+
+class Image(models.Model):
+    image = models.ImageField(upload_to="images")
+    small_image = models.ImageField(upload_to="images")

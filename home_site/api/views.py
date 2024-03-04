@@ -3,7 +3,7 @@ from .models import *
 from .utils import  DeviceApiView
 from rest_framework.views import APIView
 from rest_framework import generics, mixins
-from .serializers import DeviceSerializer
+from .serializers import DeviceSerializer, ImageSerializer
 
 
 class TurnDeviceOn(DeviceApiView):
@@ -46,3 +46,12 @@ class GetDeviceStatus(DeviceApiView):
 class GetDevices(DeviceApiView):
     def get(self, request, *args, **kwargs):
         return self.get_list_of_devices(request)
+
+
+class GetImages(generics.GenericAPIView, mixins.ListModelMixin):
+    serializer_class = ImageSerializer
+    queryset = Image.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
