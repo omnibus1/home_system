@@ -14,7 +14,7 @@ const Carousel = ({images}: Props) => {
 
 
   useEffect(() => {
-    setTimeout(()=> updateIndex(), 10000); 
+    setTimeout(()=> updateIndex(), 10000);
   }, [currentIndex]);
   
   const updateIndex= () => {
@@ -24,7 +24,15 @@ const Carousel = ({images}: Props) => {
 
   return (
       <div className="carousel">
-        {!images.length && <div>ładuje sie</div>}
+        {!images.length &&
+            <>
+              <div className={"w-100 py-40"}>
+                <div className={"w-4/5 m-auto flex justify-center"}>
+                  <span className={"text-2xl font-bold"}>There is a problem loading pictures...</span>
+                </div>
+              </div>
+            </>
+        }
         {Array.from({length: images.length}, (_, i) =>(
           <>
           {smallScreen ? 

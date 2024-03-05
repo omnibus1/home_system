@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
 type Props = {
-    selectedPage:string,
-    setSelectedPage: (val:string)=>void;
 }
 
 
-const Navbar = ({selectedPage, setSelectedPage}: Props) => {
+const Navbar = (props: Props) => {
 
     const smallScreen:boolean = useMediaQuery("(max-width: 640px")
     const [menuToggled, setMenuToggled] = useState<boolean>(false)
@@ -33,16 +31,16 @@ const Navbar = ({selectedPage, setSelectedPage}: Props) => {
 
                     ) : (
                         <div className="flex gap-8">
-                            <Link to="/" className={`hover:text-primary-300 transition-all ${selectedPage==='home'?'text-primary-200':''}`} onClick={()=>setSelectedPage("home")}>Home</Link>
-                            <Link to="/devices" className={`hover:text-primary-300 transition-all ${selectedPage==='devices'?'text-primary-200':''}`} onClick={()=>setSelectedPage("devices")}>Devices</Link>
+                            <Link to="/" className={`hover:text-primary-300 transition-all `}>Home</Link>
+                            <Link to="/devices" className={`hover:text-primary-300 transition-all`}>Devices</Link>
                         </div>
                     )}
             </div>
             {menuToggled && smallScreen &&
             <div className="h-screen w-screen bg-primary-100 absolute top-0 left-0 mt-14 opacity-90 py-10 nav-transition text-primary-300">
                 <div className="w-4/5 m-auto flex flex-col items-center gap-8">
-                    <Link to="/" className={`hover:text-primary-500 ${selectedPage==='home'?'text-primary-200':''}`} onClick={()=>setSelectedPage("home")}>Home</Link>
-                    <Link to="/devices" className={`hover:text-primary-500 ${selectedPage==='devices'?'text-primary-200':''}`} onClick={()=>setSelectedPage("devices")}>Devices</Link>
+                    <Link to="/" className={`hover:text-primary-500`}>Home</Link>
+                    <Link to="/devices" className={`hover:text-primary-500`}>Devices</Link>
                 </div>
             </div>
             }

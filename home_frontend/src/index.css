@@ -21,7 +21,8 @@ body,
   font-size: 4rem;
 }
 
-.nav-transition{
-  
+
+.translate-out{
+  transform: translateX(100%);
 }
 
