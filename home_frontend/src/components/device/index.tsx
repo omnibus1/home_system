@@ -1,6 +1,3 @@
-
-type Props = {}
-
 const Device = () => {
   return (
     <div className="w-screen h-screen bg-primary-500">
