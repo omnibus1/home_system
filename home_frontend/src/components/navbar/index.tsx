@@ -3,11 +3,9 @@ import { Bars3Icon, XMarkIcon} from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-type Props = {
-}
 
 
-const Navbar = (props: Props) => {
+const Navbar = () => {
 
     const smallScreen:boolean = useMediaQuery("(max-width: 640px")
     const [menuToggled, setMenuToggled] = useState<boolean>(false)
