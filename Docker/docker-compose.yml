@@ -18,6 +18,8 @@ services:
 
   backend:
     container_name: backend
+    environment:
+      - HOST 192.168.0.164
     image:
       home_site_backend
     build:
@@ -32,6 +34,8 @@ services:
       - static_files:/app/home_site/static_files
 
   frontend:
+    environment:
+       - API_URL 192.168.0.164
     container_name: frontend
     image:
       home_site_frontend
