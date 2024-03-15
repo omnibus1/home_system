@@ -37,10 +37,10 @@ const Navbar = (props: Props) => {
                     )}
             </div>
             {menuToggled && smallScreen &&
-            <div className="h-screen w-screen bg-primary-100 absolute top-0 left-0 mt-14 opacity-90 py-10 nav-transition text-primary-300">
+            <div className={`h-screen w-screen absolute top-0 bg-primary-100 absolute left-0 mt-14 opacity-90 py-10 text-primary-300`}>
                 <div className="w-4/5 m-auto flex flex-col items-center gap-8">
-                    <Link to="/" className={`hover:text-primary-500`}>Home</Link>
-                    <Link to="/devices" className={`hover:text-primary-500`}>Devices</Link>
+                    <Link to="/" className={`hover:text-primary-500`} onClick={()=>setMenuToggled(false)}>Home</Link>
+                    <Link to="/devices" className={`hover:text-primary-500`} onClick={()=>setMenuToggled(false)}>Devices</Link>
                 </div>
             </div>
             }

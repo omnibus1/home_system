@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react"
 import { Image } from "../../common/classes"
 import Carousel from "../carousel"
-type Props = {}
 
-const Home = (props: Props) => {
-
+const Home = () => {
+  const api_url = import.meta.env.VITE_API_URL || "localhost"
   const [images, setImages] = useState<Image[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const requesImages = async () =>{
     try{
-      let response = await fetch("http://localhost:8000/api/images")
+      let response = await fetch(`http://${api_url}:8000/api/images`)
       let jsonData = await response.json()
       setImages(jsonData)
       setTimeout(() => setIsLoading(false), 2000)
