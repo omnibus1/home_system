@@ -35,7 +35,7 @@ services:
 
   frontend:
     environment:
-       - API_URL 192.168.0.164
+       - API_URL 192.168.0.38
     container_name: frontend
     image:
       home_site_frontend
