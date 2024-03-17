@@ -7,7 +7,7 @@ const Home = () => {
   const [images, setImages] = useState<Image[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
-  const requesImages = async () =>{
+  const requestImages = async () =>{
     try{
       let response = await fetch(`http://${api_url}:8000/api/images`)
       let jsonData = await response.json()
@@ -25,7 +25,7 @@ const Home = () => {
   }, [isLoading]);
 
   useEffect(()=>{
-    requesImages()
+    requestImages()
   },[])
 
   return (
