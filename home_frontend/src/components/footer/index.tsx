@@ -10,7 +10,7 @@ const Footer = () => {
                         <span className="text-[0.5em] text-center">Some small letters that you hopefully won notice nor read</span>
                     </div>
                 </div>
-                <span className="text-l">@2024</span>
+                <span className="text-l">@2024SP</span>
             </div>
         </div>
     </div>

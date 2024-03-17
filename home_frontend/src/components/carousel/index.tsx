@@ -37,7 +37,7 @@ const Carousel = ({images}: Props) => {
           <>
           {smallScreen ? 
           (
-          <img src={images[i].small_image} className={`w-full h-full ${i===currentIndex?"":"hidden"}`}></img>
+            <img src={images[i].small_image} className={`w-full h-full ${i===currentIndex?"":"hidden"}`}></img>
           ) : (
             <img src={images[i].image} className={`w-full h-full ${i===currentIndex?"":"hidden"}`}></img>
           )}
