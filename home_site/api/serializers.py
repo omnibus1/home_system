@@ -24,7 +24,7 @@ class ImageSerializer(serializers.Serializer):
         fields = ["id", "image", "small_image"]
 
     def get_image(self, obj):
-        return f"http://{get_setting('HOST', '127.0.0.1')}:8000/media/{obj.image}"
+        return f"http://{get_setting('API_URL', '127.0.0.1')}:8000/media/{obj.image}"
 
     def get_small_image(self, obj):
-        return f"http://{get_setting('HOST', '127.0.0.1')}:8000/media/{obj.small_image}"
+        return f"http://{get_setting('API_URL', '127.0.0.1')}:8000/media/{obj.small_image}"
