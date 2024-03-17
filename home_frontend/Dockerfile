@@ -7,7 +7,7 @@ RUN npm i
 
 COPY . .
 
-RUN echo  "VITE_API_URL=192.168.0.164" > .env
+RUN echo  "VITE_API_URL=192.168.0.38" > .env
 
 EXPOSE 5173
 
