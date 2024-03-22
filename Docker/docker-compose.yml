@@ -19,12 +19,14 @@ services:
   backend:
     container_name: backend
     environment:
-      - HOST 192.168.0.164
+      API_URL: 192.168.0.38
     image:
       home_site_backend
     build:
       context: ../home_site/
       dockerfile: ../home_site/Dockerfile
+      args:
+        API_URL: 192.168.0.38
     restart: always
     ports:
       - "8000:8000"
@@ -34,14 +36,16 @@ services:
       - static_files:/app/home_site/static_files
 
   frontend:
-    environment:
-       - API_URL 192.168.0.164
     container_name: frontend
+    environment:
+      API_URL: 192.168.0.38
     image:
       home_site_frontend
     build:
       context: ../home_frontend
       dockerfile: ../home_frontend/Dockerfile
+      args:
+        API_URL: 192.168.0.38
     restart: always
     ports:
       - "5173:5173"
