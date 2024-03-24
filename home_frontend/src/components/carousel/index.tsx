@@ -5,9 +5,10 @@ import { Image } from "../../common/classes"
 
 type Props = {
   images:Image[]
+  error: boolean
 }
 
-const Carousel = ({images}: Props) => {
+const Carousel = ({images, error}: Props) => {
   const smallScreen:boolean = useMediaQuery("(max-width: 640px")
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
@@ -24,7 +25,7 @@ const Carousel = ({images}: Props) => {
 
   return (
       <div className="carousel">
-        {!images.length &&
+        {(error || !images.length) &&
             <>
               <div className={"w-100 py-40"}>
                 <div className={"w-4/5 m-auto flex justify-center"}>

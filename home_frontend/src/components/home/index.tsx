@@ -6,18 +6,24 @@ const Home = () => {
   const api_url = import.meta.env.VITE_API_URL || "localhost"
   const [images, setImages] = useState<Image[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [error, setError] = useState<boolean>(false)
 
   const requestImages = async () =>{
-    try{
-      let response = await fetch(`http://${api_url}:8000/api/images`)
-      let jsonData = await response.json()
-      setImages(jsonData)
-      setTimeout(() => setIsLoading(false), 2000)
-    }
-    catch (error){
-      setIsLoading(false)
-      console.log("error")
-    }
+    fetch(`http://${api_url}:8000/api/images`)
+        .then(response =>{
+          if(response.ok){
+            return response.json()
+          }
+          throw new Error("Error while fetching")
+        })
+        .then(data=>{
+          setImages(data)
+          setIsLoading(false)
+        })
+        .catch(() =>{
+          setIsLoading(false)
+          setError(true)
+        })
   }
 
   useEffect(() => {
@@ -36,7 +42,7 @@ const Home = () => {
         </div>
       </>
 
-    <Carousel images={images}/>
+    <Carousel images={images} error={error}/>
       <div className="w-100 bg-primary-500 py-40">
         <div className="m-auto w-4/5">
           <div>
